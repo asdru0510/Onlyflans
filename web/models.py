@@ -10,10 +10,14 @@ class Flan(models.Model):
         unique=True
     )
     name = models.CharField(max_length=64)
-    description=models.TextField
-    image_url=models.URLField
-    slug=models.SlugField
+    description=models.TextField(default="")
+    image_url=models.URLField(default="")
+    slug=models.SlugField(default="")
     is_private=models.BooleanField(
         default=False
     )
     
+    def __str__(self):
+        name=self.name
+        es_privado=self.is_private
+        return f"{name} - es privado?: {es_privado}"
