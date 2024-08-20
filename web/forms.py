@@ -1,29 +1,23 @@
 from django import forms
+from web.models import Contact
 
 
-class ContactForm(forms.Form):
-    nombre = forms.CharField(
-        required=True,
-        max_length=50,
-        label='Nombre:',
-        widget=forms.TextInput(attrs={
-            'class': 'form-control mb-3 fst-italic', 
-            'placeholder': 'Ingrese su nombre aqui'})
-        )
-    email = forms.EmailField(
-        required=True,
-        max_length=100,
-        label='Email:',
-        widget=forms.TextInput(attrs={
-            'class': 'form-control mb-3 fst-italic', 
-            'placeholder': 'Ingrese su correo aqui'})
-        )
-    mensaje = forms.CharField(
-        required=True,
-        max_length=500,
-        label='Mensaje:',
-        widget=forms.Textarea(attrs={
-            'class': 'form-control mb-3 fst-italic',
-            'rows': 5,
-            'placeholder': 'Ingrese su mensaje. Maximo 500 caracteres.'})
-        )
+class ContactFormModelForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['nombre', 'email', 'mensaje']
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control mb-3 fst-italic', 
+                'placeholder': 'Ingrese su nombre aquí'
+            }),
+            'email': forms.TextInput(attrs={
+                'class': 'form-control mb-3 fst-italic', 
+                'placeholder': 'Ingrese su correo aquí'
+            }),
+            'mensaje': forms.Textarea(attrs={
+                'class': 'form-control mb-3 fst-italic',
+                'rows': 5,
+                'placeholder': 'Ingrese su mensaje. Máximo 500 caracteres.'
+            }),
+        }

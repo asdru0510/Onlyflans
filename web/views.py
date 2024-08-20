@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from web.models import Flan, Contact 
-from web.forms import ContactForm
+from web.forms import ContactFormModelForm
 
 # Create your views here.
 
@@ -27,11 +27,11 @@ def welcome(request):
 
 def contact(request):
     if request.method=="GET":
-        form=ContactForm()
+        form=ContactFormModelForm()
         context={'form':form}
         return render(request, 'contact.html', context)
     else:
-        form=ContactForm(request.POST)
+        form=ContactFormModelForm(request.POST)
         if form.is_valid():
             Contact.objects.create(
                 **form.cleaned_data
