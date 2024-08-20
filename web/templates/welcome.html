@@ -1,4 +1,19 @@
 {% extends "./base.html"%}
 {% block contenido %}
-<h1>Bienvenido Cliente</h1>
-{% endblock %}
+<h1>Bienvenido cliente</h1>
+<h2>Flanes privados</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for flan in flanes_pri %}
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{ flan.image_url }}" class="card-img-top img-fluid" alt="..." style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ flan.name }}</h5>
+            <p class="card-text">{{ flan.description }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% endblock %}
