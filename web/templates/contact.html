@@ -1,0 +1,18 @@
+{% extends "./base.html"%} {% block contenido %}
+<h1 class="text-center">Contactanos</h1>
+<p class="text-center">Puedes escribirnos en caso de cualquier duda o sugerencia</p>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div class="d-flex justify-content-center">
+                <button type="submit" type="button" class="btn btn-outline-dark">Enviar</button>
+            </div>
+
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}
