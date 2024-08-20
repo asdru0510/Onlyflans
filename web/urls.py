@@ -1,0 +1,9 @@
+from django.contrib import admin
+from django.urls import path
+from views import index, about, welcome
+
+urlpatterns = [
+    path("", index, name="index"),
+    path("acerca/", about, name="about"),
+    path("bienvenido/", welcome, name="welcome"),
+    ]
