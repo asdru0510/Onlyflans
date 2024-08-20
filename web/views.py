@@ -8,9 +8,7 @@ def index(request):
     flanes_privados=Flan.objects.filter(is_private=True)
     flanes_publicos=Flan.objects.filter(is_private=False)
     context={
-        'flanes':flanes,
-        'flanes_privados':flanes_privados,
-        'flanes_publicos':flanes_publicos
+        'flanes_pub':flanes_publicos
     }
     return render(request, 'index.html', context)
 
