@@ -12,13 +12,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/acerca">Acerca</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="/bienvenido">Bienvenido</a>
-                </li>
+                </li>                
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
+
             </ul>
+            {% if user.is_authenticated %}
+            <span class="navbar-text ms-auto text-light">
+                Bienvenido, {{ user.get_username }}
+            </span>
+            <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit"class="btn btn-danger mx-2">Cerrar sesion</button>
+            </form>            
+            {% endif %}
         </div>
     </div>          
 </nav>
