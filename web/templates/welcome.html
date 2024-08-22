@@ -8,7 +8,7 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for flan in flanes_pri %}
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 zoom" data-bs-toggle="modal" data-bs-target="#flanModal{{flan.id}}" >
           <img src="{{ flan.image_url }}" class="card-img-top img-fluid" alt="..." style="height: 200px; object-fit: cover;">
           <div class="card-body">
             <h5 class="card-title">{{ flan.name }}</h5>
@@ -16,6 +16,28 @@
           </div>
         </div>
       </div>
+
+      <!-- Modal -->
+<div class="modal fade" id="flanModal{{flan.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ flan.name }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img
+        src="{{ flan.image_url }}"
+        class="img-fluid"
+        alt="..."
+        style="height: 400px; object-fit: contain"
+      />
+      <p class="mt-4 fs-5">{{ flan.description }}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
       {% endfor %}
   </div>
   {% endblock %}

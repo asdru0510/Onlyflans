@@ -1,4 +1,4 @@
-.header {
+/* .header {
     background-color: red;
     color: white;
     padding: 20px;
@@ -25,4 +25,11 @@
     padding: 20px;
     text-align: center;
     font-size: 16px;
+} */
+.zoom {
+    transition: transform 0.4s ease; /* Animation */
+}
+
+.zoom:hover {
+    transform: scale(1.1); 
 }
