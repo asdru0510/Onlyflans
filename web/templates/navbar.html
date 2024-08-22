@@ -22,11 +22,15 @@
                 {% endif %}   
             </ul>
             {% if not user.is_authenticated %}
-            <a class="btn btn-success mx-2 ms-auto " href="{% url 'login' %}">Ingresar</a>
+            <div class="mx-2 ms-auto">
+                <a class="btn btn-outline-success mx-1" href="{% url 'login' %}">Ingresar</a>
+                <a class="btn btn-outline-warning mx-1" href="{% url 'register' %}">Registrate</a>
+            </div>
+            
             {% endif %}
             {% if user.is_authenticated %}
             <span class="navbar-text ms-auto text-light">
-                Bienvenid@, {{ user.get_username }}
+                Bienvenid@, {{ user.first_name|default:user.get_username }}
             </span>
             <form id="logout-form" action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
